@@ -16,6 +16,8 @@ generadorIds=()=>{
 getEvents =()=>{
     return this.events
 }
+
+//busca el id del producto , y me dice si lo encontre o no 
 getProductByid=()=>{
      
     if (this.events.find(element=> element.id===id)){
