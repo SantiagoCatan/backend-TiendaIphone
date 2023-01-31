@@ -33,10 +33,7 @@ addEvent = async (title, descriptions, price, thumbnail, code, capacity) => {
         console.error("Falta algun elemento del objeto");
         return 
     } 
-    if (users.find(element=> element.code===code)){
-        console.error("el elemento ya existe");
-        return 
-    }
+    
 
     users.push({
         id,
@@ -50,7 +47,31 @@ addEvent = async (title, descriptions, price, thumbnail, code, capacity) => {
 
         fs.writeFileSync(this.events, JSON.stringify(users,null,2))
 }
+
+//Mostrar item por Consola
+
+WriteEvent=async()=>{
+    let ListProducts=fs.readFileSync('./users.json')
+    let Product =JSON.parse(ListProducts)
+    console.log (typeof Product)
+    
 }
+
+
+
+//eliminar producto mediante el id
+removeEvent=async(id)=>{
+    
+    users.filter(producto => producto.id != id);
+    
+}
+
+
+
+
+}
+
+
 
 async function CracionJson(){
 
@@ -73,3 +94,4 @@ await productManage.addEvent ("Watch",'Watch nike', 500, 'https://tecnoselect.co
 }
 
 CracionJson()
+WriteEvent()
