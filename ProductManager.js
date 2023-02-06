@@ -63,11 +63,7 @@ WriteEvent=async()=>{
 removeEvent=async(id)=>{
     
     users.filter(producto => producto.id != id);
-    
 }
-
-
-
 
 }
 

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "backend-tiendaiphone",
+  "version": "1.0.0",
+  "main": "ProductManager.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoCatan/backend-TiendaIphone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantiagoCatan/backend-TiendaIphone/issues"
+  },
+  "homepage": "https://github.com/SantiagoCatan/backend-TiendaIphone#readme",
+  "description": ""
+}
