@@ -1,4 +1,30 @@
-const fs =require('fs')
+//inicializacion de servidor 8080
+const express = require ('express')
+
+const app = express()
+
+const BD = require ('./users.json')
+
+app.listen(8080,()=>console.log('Server Up'))
+
+app.get('/Products/' , (req ,res )=>{
+    const {id} = req.query
+    //recorro el users.json -metodo find : id
+    const user = BD.find(item => item.id === parseInt(id))
+        if (!user) return res.send ({error:"user not found"})
+        else res.send(user)
+})
+
+
+
+//para poder exportar users.json 
+module.exports = app;
+
+
+
+//Manejo y creacion de json de productos
+
+const fs =require ('fs')
 
 let users = []
 
@@ -34,7 +60,6 @@ addEvent = async (title, descriptions, price, thumbnail, code, capacity) => {
         return 
     } 
     
-
     users.push({
         id,
         title,
@@ -47,7 +72,6 @@ addEvent = async (title, descriptions, price, thumbnail, code, capacity) => {
 
         fs.writeFileSync(this.events, JSON.stringify(users,null,2))
 }
-
 //Mostrar item por Consola
 
 WriteEvent=async()=>{
@@ -57,8 +81,6 @@ WriteEvent=async()=>{
     
 }
 
-
-
 //eliminar producto mediante el id
 removeEvent=async(id)=>{
     
@@ -66,8 +88,6 @@ removeEvent=async(id)=>{
 }
 
 }
-
-
 
 async function CracionJson(){
 
@@ -86,8 +106,5 @@ await productManage.addEvent ("Macbook",'Macbook 24', 3500, 'https://encrypted-t
 await productManage.addEvent ("Watch",'Watch Ultra', 150, 'https://www.mgmstore.com.ar/1479-large_default/Apple-Watch-Ultra-49mm-Titanium.jpg',"item11",20) 
 await productManage.addEvent ("Watch",'Watch Serie8', 100, 'https://http2.mlstatic.com/D_NQ_NP_858093-MLA48096508611_112021-O.webp',"item12",20) 
 await productManage.addEvent ("Watch",'Watch nike', 500, 'https://tecnoselect.com/pub/media/catalog/product/cache/33323691697b683682a920cb116273e9/m/i/mght-pure-platinum-black-nike-45mm.jpg',"item13",40 )
-
 }
-
 CracionJson()
-WriteEvent()
