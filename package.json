@@ -8,7 +8,7 @@
   },
   "name": "backend-tiendaiphone",
   "version": "1.0.0",
-  "main": "ProductManager.js",
+  "main": "app.js",
   "devDependencies": {},
   "repository": {
     "type": "git",

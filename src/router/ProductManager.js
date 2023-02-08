@@ -1,13 +1,15 @@
-//inicializacion de servidor 8080
-const express = require ('express')
+//modularizacion por router
+const {Router} = require ('express')
 
-const app = express()
+const router = Router()
 
-const BD = require ('./users.json')
+const BD = require ('C:/Users/santiago/Desktop/backend-TiendaIphone/users.json')
 
-app.listen(8080,()=>console.log('Server Up'))
+router.get('/' , (req ,res )=>{
+  res.send('Get All/products ')
+})
 
-app.get('/Products/' , (req ,res )=>{
+router.get('/:id' , (req ,res )=>{
     const {id} = req.query
     //recorro el users.json -metodo find : id
     const user = BD.find(item => item.id === parseInt(id))
@@ -15,10 +17,20 @@ app.get('/Products/' , (req ,res )=>{
         else res.send(user)
 })
 
+router.put('/:id' , (req ,res )=>{
+    res.send('put id')
+})
+
+router.post('/' , (req ,res )=>{
+    res.send('Post All')
+})
 
 
+router.delete('/:id' , (req ,res )=>{
+    res.send('Delete id')
+})
 //para poder exportar users.json 
-module.exports = app;
+module.exports = router
 
 
 
