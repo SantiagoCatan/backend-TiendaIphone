@@ -1,7 +1,7 @@
 //modularizacion por router
 const {Router} = require ('express')
 
-const utils = require ('../utils')
+const productService = require ('../productService')
 
 const router =  Router()
 
@@ -23,7 +23,7 @@ router.get('/:id' , (req ,res )=>{
     const {id} = req.query
     //recorro el Products.json -metodo find : id
     const user = db.find(p => p.id === parseInt(id))
-        if (!user) return res.send ({error:"user not found"})
+        if (!user) return res.send ({error:"products not found"})
         else res.send(user)
 })
 
@@ -34,7 +34,7 @@ router.get('/:id' , (req ,res )=>{
 router.post('/' , async (req ,res )=>{
     const {title, descriptions, price, thumbnail, code, capacity} = req.body;
     
-    const status = await utils.addEvent(title, descriptions, price, thumbnail, code, capacity)
+    const status = await productService.addEvent(title, descriptions, price, thumbnail, code, capacity)
     if (status === 400 ){
 
         return res.status(400).json({status:"error",massage:"Producto invalido"})
@@ -62,7 +62,7 @@ router.put('/:id' , async (req ,res )=>{
 
     db[idProducto] = {id: db[idProducto].id , ...body}
 
-    await utils.saveProduct(db);
+    await productService.saveProduct(db);
     res.status(200).json({status:"Actualizado",massage:"Producto Actualizado"})
 
 })
@@ -73,7 +73,7 @@ router.delete('/:id' , async (req ,res )=>{
 
     const { id } = req.params
 
-    const state = await utils.deleteProduct(db, id)
+    const state = await productService.deleteProduct(db, id)
     if(state === 404) {
         return res.status(404).json({status:"error",massage:"Producto no encontrado"})
     }

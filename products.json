@@ -1,7 +1,7 @@
 [
   {
-    "id": 2,
-    "title": "son-goku",
+    "id": 1,
+    "title": "Iphones",
     "descriptions": "iphone 11",
     "price": 450,
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_656548-MLA46114829749_052021-O.jpg",
@@ -9,12 +9,21 @@
     "capacity": 20
   },
   {
+    "id": 2,
+    "title": "Iphones",
+    "descriptions": "iphone 12",
+    "price": 850,
+    "thumbnail": "https://m.media-amazon.com/images/I/41xssMLI2DL._AC_.jpg",
+    "code": "item2",
+    "capacity": 20
+  },
+  {
     "id": 3,
-    "title": "kakashi",
-    "descriptions": "iphone 11",
-    "price": 450,
-    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_656548-MLA46114829749_052021-O.jpg",
-    "code": "item1",
+    "title": "Iphones",
+    "descriptions": "iphone 13",
+    "price": 950,
+    "thumbnail": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6443/6443174_sd.jpg",
+    "code": "item3",
     "capacity": 20
   }
 ]

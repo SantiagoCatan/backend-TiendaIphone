@@ -3,7 +3,7 @@
 const fs = require('fs')
 
 
-class Utils {
+class ProductService {
     constructor() {}
 static products = []
     //funcion para genera el enerador
@@ -67,5 +67,5 @@ static products = []
     }
 }
 
-module.exports = Utils
+module.exports = ProductService
 
