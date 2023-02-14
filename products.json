@@ -1,11 +1,20 @@
 [
   {
-    "id": 1,
-    "title": "iphone8",
-    "descriptions": "pantalla",
-    "price": 15000,
-    "thumbnail": "sadaasdasd",
-    "code": "item",
+    "id": 2,
+    "title": "son-goku",
+    "descriptions": "iphone 11",
+    "price": 450,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_656548-MLA46114829749_052021-O.jpg",
+    "code": "item1",
+    "capacity": 20
+  },
+  {
+    "id": 3,
+    "title": "kakashi",
+    "descriptions": "iphone 11",
+    "price": 450,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_656548-MLA46114829749_052021-O.jpg",
+    "code": "item1",
     "capacity": 20
   }
 ]

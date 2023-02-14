@@ -5,6 +5,7 @@ const utils = require ('../utils')
 
 const router =  Router()
 
+
 const db = require ('../../products.json')
 
 //mostrar todos los productos
@@ -44,26 +45,44 @@ router.post('/' , async (req ,res )=>{
 })
 
 //Actualizacion del productos(No debe eliminar ID)
-router.put('/:id' , (req ,res )=>{
+router.put('/:id' , async (req ,res )=>{
     const { id } = req.params
-    const idProducto = db.findindex (p => p.BD === parseInt(id))
-        if(idProducto<0){
-            return res.status(404).json({status:"error",massage:"Producto no encontrado"})
-        }
-        db[idProducto] = req.body
-        res.status(200).json({status:"Actualizado",massage:"Producto Actualizado"})
+    // Producto a modificar
+    const body = req.body
+    const idProducto = db.findIndex(p => p.id === parseInt(id))
 
-})
-//poder eliminar producto (sin borra el ID)
-router.delete('/:id' , (req ,res )=>{
 
-    const { id } = req.params
-    const currenlegth = eliminar.length
-    const eliminar = db.filter(p => p.id != parseInt(id))
-    if(eliminar.length == currenlegth) {
+    //Crear swtich -validacion
+    if(idProducto === -1){
+        console.log(id)
+
         return res.status(404).json({status:"error",massage:"Producto no encontrado"})
     }
-        res.status(200).json({status:"Actualizado",massage:"Producto Actualizado"})
+
+
+    db[idProducto] = {id: db[idProducto].id , ...body}
+
+    await utils.saveProduct(db);
+    res.status(200).json({status:"Actualizado",massage:"Producto Actualizado"})
+
+})
+
+
+//poder eliminar producto
+router.delete('/:id' , async (req ,res )=>{
+
+    const { id } = req.params
+
+    const state = await utils.deleteProduct(db, id)
+    if(state === 404) {
+        return res.status(404).json({status:"error",massage:"Producto no encontrado"})
+    }
+
+    if(state === 400) {
+        return res.status(404).json({status:"error",massage:"Producto no invalido"})
+    }
+    
+    return res.status(200).json({status:"Success",massage:"Producto eliminado"})
     
 })
 

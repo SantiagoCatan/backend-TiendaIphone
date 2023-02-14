@@ -2,7 +2,6 @@
 
 const fs = require('fs')
 
-//const db = require("../products.json")
 
 class Utils {
     constructor() {}
@@ -26,7 +25,7 @@ static products = []
 
             //ARMAR SWITCH
 
-            
+
             console.error("faltan parametros")
             return  400;
         }
@@ -40,9 +39,31 @@ static products = []
             code,
             capacity
         })
-        fs.writeFileSync('products.json', JSON.stringify(this.products, null, 2))
+
+        this.saveProduct(this.products)
+      
         
         return 201;
+    }
+
+    static saveProduct = async(product) =>{
+        fs.writeFileSync('products.json', JSON.stringify(product, null, 2))
+    }
+
+    static deleteProduct = async(db,id) => {
+
+        if(db.length === 0){
+            return 400;
+        }
+
+        const dbFiltered = db.filter(p => p.id != parseInt(id))
+       
+        if (dbFiltered.length === db.length){
+            return 404;
+        }
+        await this.saveProduct(dbFiltered)
+
+        return 200;
     }
 }
 
