@@ -1,14 +1,19 @@
-const express=require('express')
+const express = require('express')
 
-const productRouter = require ('./src/router/ProductManager')
-//const userRouter = require ('./src/router/UserManager')
+
+
+const productHandler = require ('./src/router/productHandler')
+const userHandler = require ('./src/router/UserManager')
+//const userCarts = require ('./src/router/Carts')
 
 const app = express()
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen (8080,()=> console.log ('Server Up'))
 
 app.use ('/' , express.static('public'))
-app.use ('/Products', productRouter)
-//app.use ('/userManager', userRouter)
+app.use ('/api/products', productHandler)
+// //app.use ('/api/Carts', userCarts)
+// app.use ('/userManager', userHandler)
 
